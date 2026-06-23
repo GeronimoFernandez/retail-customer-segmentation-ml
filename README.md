@@ -1,229 +1,208 @@
-# Retail Customer Segmentation using Unsupervised Machine Learning
+![Customer Segmentation](images/cluster_heatmap.png)
+# Retail Customer Segmentation Analysis
 
-## Project Overview
+## Customer Intelligence Through Unsupervised Machine Learning
 
-This project applies unsupervised machine learning techniques to segment retail customers based on purchasing behavior using transactional e-commerce data.
-
-The objective is to identify meaningful customer groups that can support data-driven marketing strategies, improve customer retention, and optimize business decision-making.
-
-The project explores multiple clustering approaches, evaluates model performance, and delivers actionable business insights through customer segmentation.
+End-to-end customer segmentation project using transactional retail data and unsupervised learning techniques to identify meaningful customer groups and generate actionable business insights.
 
 ---
 
-# Business Problem
+# Project Overview
 
-Understanding customer purchasing behavior is essential for:
+Understanding customer behavior is essential for improving retention strategies, personalization, and business decision-making.
 
-* Customer retention
-* Personalized marketing
-* Revenue optimization
-* Loyalty program design
-* Customer lifetime value improvement
+This project applies unsupervised machine learning techniques to segment customers based on purchasing behavior using the Online Retail II dataset.
 
-This project aims to identify hidden customer segments using unsupervised learning techniques.
+The objective was to identify distinct customer profiles and translate clustering results into actionable business recommendations.
+
+---
+
+# Business Objective
+
+The main objective of this analysis is to identify customer segments based on purchasing patterns, customer value, and engagement level.
+
+The final segmentation framework aims to support:
+
+- Customer retention strategies
+- Personalized marketing campaigns
+- Identification of high-value customers
+- Customer reactivation opportunities
 
 ---
 
 # Dataset
 
-The dataset contains transactional records from a UK-based online retail company between 2009 and 2011.
+Dataset:
+Online Retail II Dataset (UCI Machine Learning Repository)
 
-Features include:
+The dataset contains transactional information from a UK-based online retailer between 2009 and 2011.
 
-* Invoice information
-* Product details
-* Purchase quantities
-* Transaction dates
-* Customer identifiers
-* Country information
+Main variables include:
 
-After preprocessing and feature engineering, customer-level behavioral metrics were created using RFM analysis.
+- Invoice
+- Customer ID
+- Quantity
+- Price
+- Invoice Date
+- Country
+
+After data cleaning and preparation:
+
+- 5,878 customers analyzed
+- 1,067,371 transactions processed
 
 ---
 
 # Methodology
 
-## Data Cleaning
+The project followed a complete data science workflow:
 
-* Removed missing customer IDs
-* Filtered cancelled transactions
-* Removed invalid quantities and prices
+## 1. Data Understanding
 
-## Feature Engineering
+Exploration of:
 
-Created customer-level features including:
+- Dataset structure
+- Missing values
+- Data quality
+- Initial distributions
 
-* Recency
-* Frequency
-* Monetary Value
-* Average Order Value
-* Basket Size
-* Customer Lifetime
+## 2. Feature Engineering
 
-## Data Transformation
+Customer-level behavioral features were created:
 
-* Logarithmic transformation
-* Standardization using StandardScaler
+- Recency
+- Frequency
+- Monetary Value
+- Average Order Value
+- Basket Size
+- Customer Lifetime
 
-## Dimensionality Reduction
+## 3. Data Transformation
 
-* Principal Component Analysis (PCA)
+Applied:
 
-## Clustering Models
+- Log transformations
+- Standardization
+- PCA dimensionality reduction
 
-The following clustering algorithms were evaluated:
-
-* KMeans
-* Agglomerative Clustering
-* Gaussian Mixture Models
+to improve clustering performance.
 
 ---
 
-# Model Evaluation
+# Unsupervised Learning Models
+
+Three clustering algorithms were evaluated:
+
+- K-Means
+- Agglomerative Clustering
+- Gaussian Mixture Model
 
 Models were compared using:
 
-* Silhouette Score
-* Calinski-Harabasz Index
-* Davies-Bouldin Index
-
-KMeans with 4 clusters was selected as the final model due to its balance between interpretability, cluster separation, and business applicability.
+- Silhouette Score
+- Calinski-Harabasz Index
+- Davies-Bouldin Index
 
 ---
 
-# Final Customer Segments
+# Model Selection
 
-| Cluster   | Description                  |
-| --------- | ---------------------------- |
-| Cluster 0 | VIP Loyal Customers          |
-| Cluster 1 | One-Time / Churned Customers |
-| Cluster 2 | High-Value Bulk Buyers       |
-| Cluster 3 | Regular Customers            |
+K-Means was selected as the final model due to:
 
----
+- Best overall clustering performance
+- Strong cluster separation
+- High business interpretability
 
-# Key Insights
+Final number of clusters:
 
-* Four distinct customer segments were successfully identified.
-* A small group of VIP customers generates disproportionately high revenue.
-* A large percentage of customers exhibit low engagement and high churn risk.
-* Customer purchasing behavior varies significantly across segments.
-* Customer segmentation enables more targeted business strategies.
+**4 Customer Segments**
 
 ---
 
-# Visualizations
+# Customer Segments
 
-## Elbow Method
+## Cluster 0 — VIP Loyal Customers
 
-![Elbow Method](images/elbow_method.png)
+High-value customers with:
 
----
+- Frequent purchases
+- Recent activity
+- Strong revenue contribution
 
-## Customer Segment Heatmap
-
-![Cluster Heatmap](images/cluster_heatmap.png)
-
----
-
-## PCA Cluster Visualization
-
-![PCA Clusters](images/pca_clusters.png)
+Recommended strategy:
+Retention and loyalty programs.
 
 ---
 
-## Monetary Distribution by Segment
+## Cluster 1 — One-Time / Churned Customers
 
-![Boxplot](images/monetary_boxplot.png)
+Customers with:
+
+- Low activity
+- Long inactivity periods
+- High churn risk
+
+Recommended strategy:
+Reactivation campaigns.
 
 ---
 
-# Tech Stack
+## Cluster 2 — High-Value Bulk Buyers
 
-* Python
-* Pandas
-* NumPy
-* Scikit-learn
-* Matplotlib
-* Seaborn
-* Joblib
-* Jupyter Notebook
+Customers characterized by:
+
+- Large order values
+- Large basket sizes
+
+Recommended strategy:
+Dedicated offers and volume-based incentives.
+
+---
+
+## Cluster 3 — Regular Customers
+
+Stable customers with:
+
+- Consistent purchasing behavior
+- Growth potential
+
+Recommended strategy:
+Upselling and cross-selling initiatives.
+
+---
+
+# Project Results
+
+The final model successfully identified meaningful customer groups and transformed transactional data into actionable business insights.
+
+Key outcomes:
+
+- Customer segmentation framework created
+- Business-oriented customer profiles identified
+- Recommendations developed for each segment
 
 ---
 
 # Repository Structure
-
-```bash
-retail-customer-segmentation-ml/
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── notebooks/
-│   ├── 01_data_cleaning_and_eda.ipynb
-│   ├── 02_feature_engineering.ipynb
-│   ├── 03_clustering_models.ipynb
-│   └── 04_business_report.ipynb
-│
-├── models/
-│   ├── kmeans_customer_segmentation.pkl
-│   └── scaler.pkl
-│
-├── images/
-│
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
+├── data
+├── images
+├── models
+├── notebooks
+└── README.md
 
 ---
 
-# How to Run
+# Technologies Used
 
-```bash
-git clone https://github.com/yourusername/retail-customer-segmentation-ml.git
-```
+Python
 
-Install dependencies:
+Libraries:
 
-```bash
-pip install -r requirements.txt
-```
-
-Run notebooks in order:
-
-1. Data Cleaning & EDA
-2. Feature Engineering
-3. Clustering Models
-4. Business Report
-
----
-
-# Future Improvements
-
-Potential future enhancements include:
-
-* Cluster stability analysis
-* Bootstrap validation
-* DBSCAN implementation
-* UMAP dimensionality reduction
-* Real-time customer segmentation pipeline
-* Integration with dashboards and BI tools
-
----
-
-# Business Value
-
-This project demonstrates how machine learning can transform raw transactional data into actionable business intelligence.
-
-The final segmentation strategy can support:
-
-* Personalized marketing campaigns
-* Customer retention initiatives
-* Revenue optimization
-* Loyalty strategies
-* Customer lifetime value analysis
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
 
 ---
 
@@ -231,4 +210,4 @@ The final segmentation strategy can support:
 
 Geronimo Fernandez
 
-Aspiring Data Analyst / Data Scientist focused on machine learning, analytics, and business intelligence.
+Data Science / Data Analytics Portfolio Project
