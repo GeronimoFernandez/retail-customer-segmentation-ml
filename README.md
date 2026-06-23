@@ -1,4 +1,4 @@
-![Customer Segmentation](images/cluster_heatmap.png)
+images/final_customer_segments.png
 # Retail Customer Segmentation Analysis
 
 ## Customer Intelligence Through Unsupervised Machine Learning
